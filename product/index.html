@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>No Fun Studio | Product &amp; Interaction Design</title>
+    <title>RAGHEB BEN SALAH | &amp; PORTFOLIO</title>
     <meta content="Jimmy Simmons Ux Designer" name="description">
     <meta content="https://uploads-ssl.webflow.com/5fe9133c01171be2abc717a8/5ff02f259c74e685976938cd_OpenGraphImage.png" property="og:image">
     <meta content="https://uploads-ssl.webflow.com/5fe9133c01171be2abc717a8/5ff02f259c74e685976938cd_OpenGraphImage.png" property="twitter:image">
@@ -746,12 +746,11 @@
         the line some width. // Just a helper function to make the code neater function random(a, b) { const alpha = Math.random(); return a * (1.0 - alpha) + b * alpha; } // We're going to make a number of different coloured lines for fun. ["#000000",
         "#393939", "#727272", "#ABABAB", "#CECECE", "#ABABAB", "#CECECE", "#727272", "#393939", "#000000"].forEach( (color, i) => { // Store a few values for each lines' randomised spring movement const line = { spring: random(0.02, 0.1), friction: random(0.7,
         0.95), mouseVelocity: new Vec3(), mouseOffset: new Vec3(random(-1, 1) * 0.02) }; // Create an array of Vec3s (eg [[0, 0, 0], ...]) const count = 20; const points = (line.points = []); for (let i = 0; i
-        < count; i++) points.push(new Vec3());
-            line.polyline=n ew Polyline(gl, { points, vertex, uniforms: { uColor: { value: new Color(color) }, uThickness: { value: random(20, 50) } } }); line.polyline.mesh.setParent(scene); lines.push(line); } ); // Call initial resize after creating the
-            polylines resize(); // Add handlers to get mouse position const mouse=n ew Vec3(); if ( "ontouchstart" in window) { window.addEventListener( "touchstart", updateMouse, false); window.addEventListener( "touchmove", updateMouse, false); } else {
-            window.addEventListener( "mousemove", updateMouse, false); } function updateMouse(e) { if (e.changedTouches && e.changedTouches.length) { e.x=e .changedTouches[0].pageX; e.y=e .changedTouches[0].pageY; } if (e.x===u ndefined) { e.x=e .pageX; e.y=e
-            .pageY; } // Get mouse value in -1 to 1 range, with y flipped mouse.set( (e.x / gl.renderer.width) * 2 - 1, (e.y / gl.renderer.height) * -2 + 1, 0 ); } const tmp=n ew Vec3(); requestAnimationFrame(update); function update(t) { requestAnimationFrame(update);
-            lines.forEach(line=> { // Update polyline input points for (let i = line.points.length - 1; i >= 0; i--) { if (!i) { // For the first point, spring ease it to the mouse position tmp .copy(mouse) .add(line.mouseOffset) .sub(line.points[i]) .multiply(line.spring); line.mouseVelocity.add(tmp).multiply(line.friction);
+        < count; i++) points.push(new Vec3()); line.polyline=n ew Polyline(gl, { points, vertex, uniforms: { uColor: { value: new Color(color) }, uThickness: { value: random(20, 50) } } }); line.polyline.mesh.setParent(scene); lines.push(line); } ); // Call initial
+            resize after creating the polylines resize(); // Add handlers to get mouse position const mouse=n ew Vec3(); if ( "ontouchstart" in window) { window.addEventListener( "touchstart", updateMouse, false); window.addEventListener( "touchmove", updateMouse,
+            false); } else { window.addEventListener( "mousemove", updateMouse, false); } function updateMouse(e) { if (e.changedTouches && e.changedTouches.length) { e.x=e .changedTouches[0].pageX; e.y=e .changedTouches[0].pageY; } if (e.x===u ndefined)
+            { e.x=e .pageX; e.y=e .pageY; } // Get mouse value in -1 to 1 range, with y flipped mouse.set( (e.x / gl.renderer.width) * 2 - 1, (e.y / gl.renderer.height) * -2 + 1, 0 ); } const tmp=n ew Vec3(); requestAnimationFrame(update); function update(t)
+            { requestAnimationFrame(update); lines.forEach(line=> { // Update polyline input points for (let i = line.points.length - 1; i >= 0; i--) { if (!i) { // For the first point, spring ease it to the mouse position tmp .copy(mouse) .add(line.mouseOffset) .sub(line.points[i]) .multiply(line.spring); line.mouseVelocity.add(tmp).multiply(line.friction);
             line.points[i].add(line.mouseVelocity); } else { // The rest of the points ease to the point in front of them, making a line line.points[i].lerp(line.points[i - 1], 0.9); } } line.polyline.updateGeometry(); }); renderer.render({ scene });
             } }
     </script>
